@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>Home</title>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+<meta http-equiv="X-UA-Compatible" content="IE=11" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+<style>
+/***** General styling *****/
+p {
+  text-align: justify;
+}
+a {
+  color: #0F773C;
+}
+a:hover {
+  color: #CB831E;
+  text-decoration: none;
+}
+/***** Nav *****/
+/* NOTE: smooth css animations */
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.htmlBody #sidebarWrapper,
+#sidebarWrapper .sidebar-brand > a,
+.htmlBody .page-content,
+#sidebarWrapper .navMenu ul li a,
+#show-sidebar,
+#close-sidebar {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+    font-weight: 400;
+    font-size: 14px; 
+}
+li.nav-item a.nav-link:hover {
+    text-decoration: underline;
+}
+/***** When sidebar is toggled *****/
+.htmlBody.toggled #sidebarWrapper {
+  left: 0px;
+}
+@media screen and (min-width: 768px) {
+  .htmlBody.toggled .page-content {
+    padding-left: 300px;
+  }
+}
+/***** Open/Close Sidebar *****/
+#show-sidebar {
+    position: fixed;
+    left: 0;
+    top: 6.3rem;
+    border-radius: 0 4px 4px 0px;
+    width: 2.5rem;
+    transition-delay: 0.3s;
+    z-index: 2;
+    background-color: #ff5e14;
+    color: #fff!important;
+    font-size: 1.3em;
+    padding: 0px 0px 1px 0px;
+}
+h4.navHeader.mt-4.pl-2 {
+    padding-left: 0px!important;
+}
+#hamburger {
+  margin-bottom: 0;
+}
+.htmlBody.toggled #show-sidebar {
+  left: -40px;
+}
+.htmlBody.toggled #close-sidebar {
+  color: #fff;
+}
+.htmlBody.toggled #close-sidebar:hover {
+  color: #ff5e14;
+}
+/***** Sidebar: general *****/
+#sidebarWrapper {
+  width: 18.8rem;
+  height: 100%;
+  max-height: 100%;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  z-index: 2;
+  overflow-y: auto;
+  background: #000;
+}
+#sidebarWrapper ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+/***** Sidebar brand & logo *****/
+#sidebarWrapper .sidebar-brand {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+      justify-content: right;
+}
+#sidebarWrapper .sidebar-brand > a {
+  text-transform: uppercase;
+  font-weight: bold;
+  flex-grow: 1;
+}
+#sidebarWrapper .sidebar-brand #close-sidebar {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.sidebar-logo {
+  margin-top: 0;
+}
+/***** Sidebar nav links *****/
+.navMenu {
+padding: 0px 20px 0px;
+}
+.navMenu ul li a {
+  padding: 8px 30px 8px 20px;
+}
+.sidebar-brand > a, .navMenu ul li a {
+  color: #1F2161;
+}
+.navMenu ul li:hover > a,
+.sidebar-brand > a:hover {
+  color: #0F773C;
+}
+h1, h2, h3, h4, h5, h6 {
+}
+section {
+    padding: 60px 0;
+    min-height: 100vh;
+}
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    outline: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-footer{
+  position: relative;
+  background: #1e2129;
+     margin-top: 15px; 
+}
+
+.footer-content{
+  position: relative;
+  padding: 85px 0px 80px 0px;
+}
+.footer-content:before{
+  position: absolute;
+  content: '';
+  background: url(images/world-map.png);
+  width: 744px;
+  height: 365px;
+  top: 50px;
+  right: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation-name: float-bob;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  -webkit-animation-name: float-bob;
+  -webkit-animation-duration: 30s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: float-bob;
+  -moz-animation-duration: 30s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: float-bob;
+  -ms-animation-duration: 30s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-animation-name: float-bob;
+  -o-animation-duration: 30s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: linear;
+}
+.footer-content .logo-widget{
+  position: relative;
+  margin-top: -5px;
+}
+.footer-content .logo-widget .footer-social li{
+  position: relative;
+  display: inline-block;
+  margin-right: 9px;
+}
+.footer-content .logo-widget .footer-social li:last-child{
+  margin-right: 0px;
+}
+.footer-content .logo-widget .footer-social li a{
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  background: #2e3138;
+  color: #9ea0a9;
+  text-align: center;
+  border-radius: 50%;
+}
+.footer-content .logo-widget .footer-social li a:hover{
+  color: #ffffff!important;
+  background: #ff5e14;
+}
+.footer-content .logo-widget .logo-box{
+  margin-bottom: 25px;
+}
+.footer-content .logo-widget .text p{
+  color: #9ea0a9;
+  margin-bottom: 32px;
+}
+.footer-content .footer-title{
+  position: relative;
+  font-size: 24px;
+  line-height: 35px;
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 27px;
+}
+.footer-content .service-widget .list li{
+  display: block;
+  margin-bottom: 12px;
+}
+.footer-content .service-widget .list li a{
+  position: relative;
+  display: inline-block;
+  color: #9ea0a9;
+}
+.footer-content .service-widget .list li a:hover{
+  color: #ff5e14;
+}
+.footer-content .contact-widget p{
+  color: #9ea0a9;
+  margin-bottom: 15px;
+}
+.footer-content .contact-widget{
+  margin-left: 90px;
+}
+.footer-content .contact-widget .footer-title{
+  margin-bottom: 29px;
+}
+
+/** footer-bottom **/
+
+.footer-bottom{
+  position: relative;
+  background: #13151a;
+  padding: 25px 0px 22px 0px;
+}
+.footer-bottom .copyright,
+.footer-bottom .copyright a,
+.footer-bottom .footer-nav li a{
+  position: relative;
+  color: #9ea0a9;
+}
+.footer-bottom .copyright a:hover,
+.footer-bottom .footer-nav li a:hover{
+  color: #ff5e14;
+}
+.footer-bottom .footer-nav{
+  position: relative;
+  text-align: right;
+}
+.footer-bottom .footer-nav li{
+  position: relative;
+  display: inline-block;
+  margin-left: 29px;
+}
+.footer-bottom .footer-nav li:first-child{
+  margin-left: 0px;
+}
+.footer-bottom .footer-nav li:before{
+  position: absolute;
+  content: '';
+  background: #9ea0a9;
+  width: 1px;
+  height: 14px;
+  top: 7px;
+  left: -18px;
+}
+.footer-bottom .footer-nav li:first-child:before{
+  display: none;
+}
+.logo-box img {
+    max-width: 220px;
+}
+
+/* #Primary
+================================================== */
+
+
+/* #Navigation
+================================================== */
+
+.start-header {
+	opacity: 1;
+	transform: translateY(0);
+	padding: 20px 0;
+	box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);
+	-webkit-transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out;
+}
+.start-header.scroll-on {
+	box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.15);
+	padding: 10px 0;
+	-webkit-transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out;
+}
+.start-header.scroll-on .navbar-brand img{
+	height: 24px;
+	-webkit-transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out;
+}
+.navigation-wrap{
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	-webkit-transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out;
+}
+.navbar{
+	padding: 0;
+}
+.navbar-brand img{
+	height: 28px;
+	width: auto;
+	display: block;
+  filter: brightness(10%);
+	-webkit-transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out;
+}
+.navbar-toggler {
+	float: right;
+	border: none;
+	padding-right: 0;
+}
+.navbar-toggler:active,
+.navbar-toggler:focus {
+	outline: none;
+}
+.navbar-light .navbar-toggler-icon {
+	width: 24px;
+	height: 17px;
+	background-image: none;
+	position: relative;
+	border-bottom: 1px solid #000;
+    transition: all 300ms linear;
+}
+.navbar-light .navbar-toggler-icon:after, 
+.navbar-light .navbar-toggler-icon:before{
+	width: 24px;
+	position: absolute;
+	height: 1px;
+	background-color: #000;
+	top: 0;
+	left: 0;
+	content: '';
+	z-index: 2;
+    transition: all 300ms linear;
+}
+.navbar-light .navbar-toggler-icon:after{
+	top: 8px;
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+	transform: rotate(45deg);
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+	transform: translateY(8px) rotate(-45deg);
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+	border-color: transparent;
+}
+.nav-link{
+	color: #212121 !important;
+	font-weight: 500;
+    transition: all 200ms linear;
+}
+.nav-item:hover .nav-link{
+	color: #ff5e14 !important;
+}
+.nav-item.active .nav-link{
+	color: #ff5e14  !important;
+}
+.nav-link {
+	position: relative;
+	padding: 5px 0 !important;
+	display: inline-block;
+}
+.nav-item:hover:after{
+	bottom: 0;
+	opacity: 1;
+}
+.nav-item.active:hover:after{
+	opacity: 0;
+}
+.nav-item{
+	position: relative;
+    transition: all 200ms linear;
+}
+.section {
+    position: relative;
+	width: 100%;
+	display: block;
+}
+.over-hide {
+    overflow: hidden;
+}
+.nav-item .dropdown-menu {
+    transform: translate3d(0, 10px, 0);
+    visibility: hidden;
+    opacity: 0;
+	max-height: 0;
+    display: block;
+	padding: 0;
+	margin: 0;
+    transition: all 200ms linear;
+}
+.nav-item.show .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+	max-height: 999px;
+    transform: translate3d(0, 0px, 0);
+}
+.dropdown-menu {
+	padding: 10px!important;
+	margin: 0;
+	font-size: 13px;
+	letter-spacing: 1px;
+	color: #212121;
+	background-color: #fcfaff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.15);
+    transition: all 200ms linear;
+}
+.dropdown-toggle::after {
+	display: none;
+}
+
+.dropdown-item {
+	padding: 3px 15px;
+	color: #212121;
+	border-radius: 2px;
+    transition: all 200ms linear;
+}
+.dropdown-item:hover, 
+.dropdown-item:focus {
+	color: #fff;
+	background-color: rgba(129,103,169,.6);
+}
+body.dark h1 span{
+    transition-delay: 0ms !important;
+}
+body.dark .dropdown-menu {
+	color: #fff;
+	background-color: #1f2029;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+}
+body.dark .dropdown-item {
+	color: #fff;
+}
+body.dark .navbar-light .navbar-toggler-icon {
+	border-bottom: 1px solid #fff;
+}
+body.dark .navbar-light .navbar-toggler-icon:after, 
+body.dark .navbar-light .navbar-toggler-icon:before{
+	background-color: #fff;
+}
+body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+	border-color: transparent;
+}
+div.bg-light {
+    background-color: transparent!important;
+}
+
+
+/* #Media
+================================================== */
+
+@media (max-width: 767px) { 
+	h1{
+		font-size: 38px;
+	}
+	.nav-item:after{
+		display: none;
+	}
+	.nav-item::before {
+		position: absolute;
+		display: block;
+		top: 15px;
+		left: 0;
+		width: 11px;
+		height: 1px;
+		content: "";
+		border: none;
+		background-color: #000;
+		vertical-align: 0;
+	}
+	.dropdown-toggle::after {
+		position: absolute;
+		display: block;
+		top: 10px;
+		left: -23px;
+		width: 1px;
+		height: 11px;
+		content: "";
+		border: none;
+		background-color: transparent;
+		vertical-align: 0;
+		transition: all 200ms linear;
+	}
+	.dropdown-toggle[aria-expanded="true"]::after{
+		transform: rotate(90deg);
+		opacity: 0;
+	}
+	.dropdown-menu {
+		padding: 0 !important;
+		background-color: transparent;
+		box-shadow: none;
+		transition: all 200ms linear;
+	}
+	.dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+		margin-top: 10px !important;
+		margin-bottom: 20px !important;
+	}
+	body.dark .nav-item::before {
+		background-color: #fff;
+	}
+	body.dark .dropdown-toggle::after {
+		background-color: #fff;
+	}
+	body.dark .dropdown-menu {
+		background-color: transparent;
+		box-shadow: none;
+	}
+}
+span.logoo {
+    font-weight: 700;
+    font-size: 25px;
+}
+nav#sidebarWrapper, nav#sidebarWrapper li a {
+    color: #ffffff!important;
+}
+a:hover, body #sidebarWrapper a:hover {
+    color: #ff5e14 !important;
+}
+.logo-widget.footer-widget .footer-title {
+    padding-top: 5px;
+}
+.banner {
+  background-color: #0d112b;
+  color: #f1f1f1;
+  height: 100vh;
+}
+
+.banner .row {
+  align-items: center;
+  height: 100vh;
+  overflow:hidden;
+}
+.btn {
+  padding: 0.5em 1.5em;
+  border-radius: 2em;
+}
+
+@media screen and (min-width: 769px) {
+ .banner p {
+    font-size: 1.2em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .banner {
+    padding: 2em;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 567px) {
+ .banner img {
+    width: 70%;
+  }
+}
+
+@media(max-width: 991px){
+.footer-content .contact-widget {
+    margin-left: 0;
+    margin-top: 30px;
+}
+}
+.container {
+    max-width: 1280px;
+}
+.box {
+    position: relative;
+}
+.box {
+    position: relative;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-blend-mode: multiply;
+	    padding: 35px 25px 25px!important;
+}
+h1.fw-bold.display-4 {
+    font-weight: 600;
+    font-size: 40px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+.box p {
+    margin-bottom: 20px;
+}
+.box a.btn.btn-light {
+    margin-top: 20px;
+}
+</style>
+</head>
+<body class="home">
+<div class="htmlBody toggled">
+  <a id="show-sidebar" class="btn btn-sm" href="javascript:;">
+  <i class="icon ion-md-menu" id="hamburger"></i>
+</a>
+  <nav id="sidebarWrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <div id="close-sidebar">
+          <i class="icon ion-md-close"></i>
+        </div>
+      </div>
+      <div class="navMenu">
+        <ul>
+          <li>
+            <h4 class="navHeader mt-4 pl-2">
+              Countries
+            </h4>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">
+                India
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">
+                Thailand
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">
+                Korea
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">
+                Malaysia
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">
+                Indonesia
+              </a>
+          </li>
+        </ul>
+      </div>
+      <!-- END navMenu  -->
+    </div>
+    <!-- END sidebar-content  -->
+  </nav>
+  <!-- END #sidebarWrapper  -->
+  <div class="page-content">
+  	<div class="navigation-wrap bg-light start-header start-style">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="javascript:; target="_blank"><span class="logoo">China (A1, Stable) </span></a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link dropdown-toggle" data-toggle="" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">About Us</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">Contact Us</a>
+								</li>				
+							</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+		</div>
+	</div>
+
+  
+<!-- Link to page
+================================================== -->
+    <main class="container-fluid">
+      <div class="row">
+
+      </div>
+    </main>
+	
+	<div class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 order-2 order-sm-1">
+        <h1 class="fw-bold display-4">China Sector Profiles</h1>
+        <p>Moody's sector profiles is a series of publications designed to providing comprehensive, in-depth research and insights into the key demand drivers and ESG factors of corporate and public infrastructure sector in China</p>
+        <a href="#" class="btn btn-light"> Learn More</a>
+      </div>
+      <div class="col-sm-5 offset-md-1 order-1 order-sm-2">
+        <img src="images/chinamain.png" class="img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/aero.jpg), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Airports</h1>
+        <p>China civil aviation transportation has grown rapidly and ensures stability of national industrial and supply chains. China is aiming to achieve an integrated transportation and logistics system with breakthrough in smart technology and green infrastructure to improve capacity, service quality and effeciency of transportation sector by 2025.</p>
+        <a href="https://www.moodys.com/research/Airports-China-Detailed-view-of-the-sector-recovery-potential-and-Sector-Profile--PBC_1350353" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/coal.png), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Coal</h1>
+        <p>We expect China's coal production in absolute volume will continue to grow in the next 3-5 years, but at much slower pace, as the country accelerate investments in renewable energy. As China's energy demand are increasingly met by its renewable energy sources, China's total coal production will peak and fall before 2030, consistent with its carbon peak goal.</p>
+        <a href="https://www.moodys.com/research/doc--PBC_1300631" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/cement.jpg), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Cement</h1>
+        <p> Lower demand for cement products will make overcapacity more prominent and sustained. It will take time for the cement industry to gradually adapt to the structural decline in demand. Capacity reduction, either because of regualtory or economic reasons, is neded before the industry can rebalance itself against a lower level of demand.</p>
+        <a href="https://www.moodys.com/research/doc--PBC_1319281" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/steel.jpg), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Steel</h1>
+        <p>The Chinese government aims to increase the market share of top 10 steelmakers to 60% by 2025 from the current level of around 40%. To achieve carbon peaking and carbon neutrality before 2030 and 2060, respectively, steel companies in China applying low carbon technology and developing new products whioch can reduce steel usage and end users' carbon footprint. </p>
+        <a href="https://www.moodys.com/research/Steel-China-A-Detailed-view-of-the-sector-Sector-Profile--PBC_1364614" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+   <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/automobile.png), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Automobiles</h1>
+        <p>China is the lagest auto market with units sales reaching 26.9 million in 2022. Regulations that encourage automakers to produce NEVs, rising auto penetrations and sales, investment in technology R&D and product development, improved NEV price-to-performance, and a greater number of charging piles will support NEV sales.</p>
+        <a href="https://www.moodys.com/research/doc--PBC_1326317" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/expressdelivery.jpg), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Express Delivery</h1>
+        <p>The express delivery market in China is fragmented but market consolidation in the past few years has resulted in the formation of a few large players. China's express delivery sector will transit from a labour-intensive industry to a capital-and-technology intensive one. </p>
+        <a href="https://www.moodys.com/research/doc--PBC_1329269" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/oilfield.jpg), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Oilfield services</h1>
+        <p>The Chinese government's increased focus on energy security and thereby reducing its import dependency on oil and gas, will result in domestic oil and gas production, thus increasing the need for oilfield services. High oil prices and supply constraints have incentivized E&P companies to increase investment to boost production.</p>
+        <a href="https://www.moodys.com/research/Oilfiled-Services-China-A-detailed-view-of-the-sector-Sector-Profile--PBC_1374413" class="btn btn-light"> Learn More </a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/homeappliances.jpg), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Home appliances</h1>
+        <p>Higher disposable incomes, urbanizations rates and housing completions are the key demand drivers of home appliances in China. The industry maintained steady growth even in difficult operating conditions over the last couple of years, supported by the product innovations and consumptions upgrades.</p>
+        <a href="https://www.moodys.com/research/Home-appliances-China-A-detailed-view-of-the-sector-Sector-Profile--PBC_1358093" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+<div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/protein.png), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Protein</h1>
+        <p>While the protein industry is highly fragmented, established companies are further solidfying their presence in the market. New entrants are focussing on niche offerings of alternative protein products with new technologies and ingredients.</p>
+        <a href="https://www.moodys.com/research/Protein-China-Detailed-view-of-the-sector-Sector-Profile--PBC_1338960" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="box p-3 text-white h-100" style="background-image: url(images/waterutilities.jpg), linear-gradient(108deg, #3e5151 0%,#decba4 100%);">
+        <h1 class="fw-bold display-4">Water utilities</h1>
+        <p>China's waster utilities has recorded rapid growth in investment and is being liberalized gradually. The governmrent is keen on attracting private and foreign capital to support the effecient management, operation and sustainable development of the country's water infrastructure.</p>
+        <a href="https://www.moodys.com/research/Water-Utilities-China-Rapid-Growth-driven-by-urbanization-and-policy-Sector-Profile--PBC_1362524" class="btn btn-light"> Learn More</a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+	    <!-- END .container-fluid -->
+	<footer class="main-footer">
+        <div class="container-fluid">
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                        <div class="logo-widget footer-widget">  
+							<div class="footer-title">About Us</div>                        
+                            <div class="text">
+                                <p>Lorem ipsum dolor amet consectetur adi pisicing elit sed eiusm tempor incididunt ut labore dolore magna aliqua enim ad minim veniam quis.nostrud exercita.laboris nisi ut aliquip ea commodo conse quatuis aute irure.</p>
+                            </div>
+                            <ul class="footer-social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-2 footer-column">
+                        <div class="service-widget footer-widget">
+                            <div class="footer-title">Geographies</div>
+                            <ul class="list">
+                                <li><a href="#">India</a></li>
+                                <li><a href="#">Indonesia</a></li>
+                                <li><a href="#">Malaysia</a></li>
+                                <li><a href="#">Thailand</a></li>
+                                <li><a href="#">Korea</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-widget">
+                        <div class="contact-widget footer-widget">
+                            <div class="footer-title">Contacts</div>
+                            <div class="text">
+                                <p>Lorem Ipsum, simply dummy text, printing, Chandigarh</p>
+                                <p>+91(784) 1234567</p>
+                                <p>info@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- main-footer end -->
+    <div class="footer-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 column">
+                    <div class="copyright"><a href="#">Asif</a> &copy; 2023 All Right Reserved</div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 column">
+                    <ul class="footer-nav">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- END .page-content -->
+</div>
+<!-- END whole page wrapper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+jQuery(function($) {
+  $("#close-sidebar").click(function() {
+    $(".htmlBody").removeClass("toggled");
+  });
+  $("#show-sidebar").click(function() {
+    $(".htmlBody").addClass("toggled");
+  });
+});
+</script>
+</body>
+</html>
